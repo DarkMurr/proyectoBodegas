@@ -1,0 +1,38 @@
+{% if request.session.carrito %}
+
+    {% for pid, item in request.session.carrito.items %}
+        <div class="card" style="margin-bottom:10px;">
+            <strong>{{ item.producto }}</strong><br>
+            <small>{{ item.presentacion }}</small>
+
+            <div style="margin:8px 0; display:flex; align-items:center; gap:10px;">
+                <a href="javascript:void(0)" onclick="removeFromCart('{{ pid }}')">➖</a>
+                <strong>{{ item.cantidad }}</strong>
+                <a href="javascript:void(0)" onclick="addToCart('{{ pid }}')">➕</a>
+            </div>
+
+            <small>
+                ${{ item.precio }} × {{ item.cantidad }} =
+                <strong>${{ item.subtotal }}</strong>
+            </small>
+        </div>
+    {% endfor %}
+
+    <hr>
+
+    <!-- TOTAL (calculado en backend) -->
+    <div style="margin-bottom:10px; font-size:18px;">
+        <strong>Total: ${{ total }}</strong>
+    </div>
+
+    <!-- CONFIRMAR PEDIDO -->
+    <form action="{% url 'confirmar_pedido' %}" method="post" onsubmit="closeCart()">
+        {% csrf_token %}
+        <button style="margin-top:10px; width:100%;">
+            ✅ Confirmar pedido
+        </button>
+    </form>
+
+{% else %}
+    <p>Tu carrito está vacío</p>
+{% endif %}

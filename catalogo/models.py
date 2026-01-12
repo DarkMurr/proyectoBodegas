@@ -45,6 +45,7 @@ class ProveedorProducto(models.Model):
 class Presentacion(models.Model):
     tamano = models.DecimalField(max_digits=8, decimal_places=2)
     unidad_medida = models.CharField(max_length=20)
+    piezas_por_unidad = models.PositiveIntegerField(default=1)
     precio = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     codigo_barras = models.CharField(max_length=50, unique=True, null=True, blank=True)
     activo = models.BooleanField(default=True)

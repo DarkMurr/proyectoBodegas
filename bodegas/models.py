@@ -16,11 +16,12 @@ class Inventario(models.Model):
 
     stock = models.PositiveIntegerField()
     stock_minimo = models.PositiveIntegerField(default=0)
+    unidad_stock = models.CharField(max_length=30)
     activo = models.BooleanField(default=True)
     bodega = models.ForeignKey(Bodega, on_delete=models.CASCADE, related_name='inventarios')
-    presentacion = models.ForeignKey(Presentacion, on_delete=models.CASCADE, related_name='inventarios')
+    presentacion = models.ForeignKey(Presentacion, on_delete=models.PROTECT, related_name='inventarios')
 
     class Meta:
         unique_together = ('bodega', 'presentacion')
-    def __str__(self):
+    def _str_(self):
         return f"{self.presentacion} - {self.bodega}"

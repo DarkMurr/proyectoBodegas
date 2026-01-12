@@ -1,0 +1,42 @@
+{% extends "empleados/base_empleados.html" %}
+{% block title %}Pedidos pendientes{% endblock %}
+
+{% block content %}
+<h2>📦 Pedidos pendientes</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Bodega</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for p in pedidos %}
+        <tr>
+            <td>#{{ p.id }}</td>
+            <td>{{ p.fecha|date:"d/m/Y H:i" }}</td>
+            <td>${{ p.total }}</td>
+            <td>{{ p.get_estado_display }}</td>
+            <td>{{ p.bodega }}</td>
+            <td>
+                <a href="{% url 'pedido_detalle' p.id %}">
+                    🔍 Ver detalle
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" style="text-align:center;">
+                No hay pedidos pendientes
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

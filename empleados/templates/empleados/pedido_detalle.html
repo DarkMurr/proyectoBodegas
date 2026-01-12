@@ -1,0 +1,75 @@
+{% extends "empleados/base_empleados.html" %}
+{% block title %}Pedido {{ pedido.id }}{% endblock %}
+
+{% block content %}
+<h2>🧾 Pedido #{{ pedido.id }}</h2>
+
+<p>
+    <strong>Estado:</strong>
+    <span style="text-transform: uppercase;">
+        {{ pedido.estado }}
+    </span>
+</p>
+
+<hr>
+
+<ul>
+    {% for d in pedido.detalles.all %}
+        <li>
+            {{ d.presentacion.producto.nombre }}
+            {{ d.presentacion.tamano }} {{ d.presentacion.unidad_medida }}
+            — {{ d.cantidad }} × ${{ d.precio_unitario }}
+            = <strong>${{ d.subtotal }}</strong>
+        </li>
+    {% empty %}
+        <li>No hay productos en este pedido</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<h3>Total: ${{ pedido.total }}</h3>
+
+<hr>
+
+<!-- 🔘 ACCIONES SEGÚN ESTADO -->
+
+{% if pedido.estado == 'pendiente' %}
+    <form method="post" action="{% url 'cobrar_pedido' pedido.id %}">
+        {% csrf_token %}
+        <button>💳 Cobrar pedido</button>
+    </form>
+
+    <form method="post" action="{% url 'cancelar_pedido' pedido.id %}" style="margin-top:10px;">
+        {% csrf_token %}
+        <button style="background:#a00;">❌ Cancelar pedido</button>
+    </form>
+{% endif %}
+
+{% if pedido.estado == 'pagado' %}
+    <form method="post" action="{% url 'preparar_pedido' pedido.id %}">
+        {% csrf_token %}
+        <button>📦 Preparar pedido (descontar stock)</button>
+    </form>
+{% endif %}
+
+{% if pedido.estado == 'preparado' %}
+    <form method="post" action="{% url 'entregar_pedido' pedido.id %}">
+        {% csrf_token %}
+        <button>🚚 Marcar como entregado</button>
+    </form>
+{% endif %}
+
+{% if pedido.estado == 'entregado' %}
+    <p style="color:green;">
+        ✅ Pedido completado
+    </p>
+{% endif %}
+
+{% if pedido.estado == 'cancelado' %}
+    <p style="color:red;">
+        ❌ Pedido cancelado
+    </p>
+{% endif %}
+
+{% endblock %}
