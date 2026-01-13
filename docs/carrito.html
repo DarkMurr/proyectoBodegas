@@ -1,49 +1,47 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito | Pirata Market</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-{% block title %}Carrito{% endblock %}
+<div class="navbar">
+    <strong>PIRATA MARKET</strong>
+    <div>
+        <a href="catalogo.html">Inicio</a>
+        <a href="carrito.html">Carrito 🛒</a>
+        <a href="login.html">Login</a>
+    </div>
+</div>
 
-{% block content %}
 <div class="container">
-
     <h2>🛒 Tu carrito</h2>
 
-    {% if carrito %}
-        {% for pid, item in carrito.items %}
-            <div class="card">
-                <p><strong>{{ item.producto }}</strong></p>
-                <p>{{ item.presentacion }}</p>
+    <div class="card">
+        <p><strong>Coca-Cola</strong></p>
+        <p>600 ml</p>
 
-                <p>
-                    Cantidad:
-                    <a href="{% url 'quitar_uno' pid %}">➖</a>
-                    <strong>{{ item.cantidad }}</strong>
-                    <a href="{% url 'agregar_carrito' pid %}">➕</a>
-                </p>
+        <p>
+            Cantidad:
+            <button>-</button>
+            <strong>2</strong>
+            <button>+</button>
+        </p>
 
-                <p class="precio">
-                    ${{ item.precio }}
-                </p>
+        <p class="precio">$40</p>
+        <a href="#">❌ Quitar</a>
+    </div>
 
-                <a href="{% url 'eliminar_carrito' pid %}">
-                    ❌ Quitar
-                </a>
-            </div>
-            <br>
-        {% endfor %}
+    <br>
 
-        <h3>Total: ${{ total }}</h3>
+    <h3>Total: $40</h3>
 
-        <!-- 🔥 BOTÓN CONFIRMAR PEDIDO -->
-        <form action="{% url 'confirmar_pedido' %}" method="post">
-            {% csrf_token %}
-            <button type="submit" style="margin-top:20px;">
-                ✅ Confirmar pedido
-            </button>
-        </form>
-
-    {% else %}
-        <p>Tu carrito está vacío</p>
-    {% endif %}
-
+    <button style="margin-top:20px;" onclick="alert('Pedido confirmado (demo)')">
+        ✅ Confirmar pedido
+    </button>
 </div>
-{% endblock %}
+
+</body>
+</html>
