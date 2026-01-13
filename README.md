@@ -63,3 +63,10 @@ entre productos, pedidos, inventario, clientes y empleados.
 Modelo relacional final utilizado para la implementación en PostgreSQL.
 
 ![Diagrama Relacional](diagramas/Diagrama_Relacional_BodegaDB.drawio.png)
+
+---
+
+Usuario de Prueba
+Usuario: DarkMurr
+Constraseña: Escom1234
+
