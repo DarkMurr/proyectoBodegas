@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Panel empleados{% endblock %}</title>
+    <style>
+        body { margin:0; font-family:Arial; background:#f4f4f4; }
+        .navbar {
+            background:#111;
+            color:white;
+            padding:15px;
+            display:flex;
+            justify-content:space-between;
+        }
+        .navbar a { color:white; margin-left:15px; text-decoration:none; }
+        .container { padding:30px; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <strong>🧑‍💼 PIRATA MARKET</strong>
+
+    <div>
+        <a href="{% url 'empleados_dashboard' %}">Dashboard</a>
+
+        <a href="{% url 'pos' %}">POS</a>
+
+        <a href="{% url 'pedidos_pendientes' %}">Pedidos</a>
+
+        <a href="{% url 'inventario' %}">Inventario</a>
+
+        <a href="{% url 'productos' %}">Productos</a>
+
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" style="
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                font-size: inherit;
+                margin-left: 10px;
+            ">
+                Salir
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

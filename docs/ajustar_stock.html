@@ -1,0 +1,29 @@
+{% extends "empleados/base_empleados.html" %}
+
+{% block content %}
+<h2>⚙ Ajustar stock</h2>
+
+<p>
+    <strong>{{ inventario.presentacion.producto.nombre }}</strong><br>
+    {{ inventario.presentacion.tamano }}
+    {{ inventario.presentacion.unidad_medida }}<br>
+    Bodega: {{ inventario.bodega.nombre }}
+</p>
+
+<p>
+    Stock actual: <strong>{{ inventario.stock }}</strong>
+</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <select name="tipo">
+        <option value="sumar">➕ Agregar</option>
+        <option value="restar">➖ Descontar</option>
+    </select>
+
+    <input type="number" name="cantidad" min="1" required>
+
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}

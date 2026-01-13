@@ -1,0 +1,44 @@
+{% for categoria in categorias %}
+    <h2>{{ categoria.nombre }}</h2>
+
+    {% if categoria.productos.exists %}
+        {% for producto in categoria.productos.all %}
+            <h3>
+                {{ producto.nombre }}
+                <small>{{ producto.marca }}</small>
+            </h3>
+
+            <div class="grid">
+                {% for pres in producto.presentaciones.all %}
+                    <div class="card">
+                        <p>
+                            <strong>
+                                {{ pres.tamano }} {{ pres.unidad_medida }}
+                            </strong>
+                        </p>
+
+                        {% if pres.piezas_por_unidad > 1 %}
+                            <p>{{ pres.piezas_por_unidad }} pz</p>
+                        {% else %}
+                            <p>Pieza</p>
+                        {% endif %}
+
+                        <p class="precio">
+                            ${{ pres.precio }}
+                        </p>
+
+                        <!-- 🔥 BOTÓN CORRECTO -->
+                        <button onclick="addToCart(`{{pres.id}}`)">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                {% empty %}
+                    <p>Sin presentaciones</p>
+                {% endfor %}
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <p>No hay productos</p>
+    {% endif %}
+{% endfor %}

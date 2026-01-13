@@ -1,0 +1,22 @@
+{% if request.session.pos %}
+    {% for pid, item in request.session.pos.items %}
+        <div style="margin-bottom:10px;">
+            <strong>{{ item.nombre }}</strong><br>
+            {{ item.cantidad }} × ${{ item.precio }}
+
+            <div>
+                <button onclick="posQuitar(`{{ pid }}`)">➖</button>
+                <button onclick="posAgregar(`{{ pid }}`)">➕</button>
+            </div>
+        </div>
+    {% endfor %}
+
+    <hr>
+    <strong>Total: ${{ total }}</strong>
+
+    <button onclick="posCobrar()" style="width:100%;">
+        COBRAR
+    </button>
+{% else %}
+    <p>Sin productos</p>
+{% endif %}

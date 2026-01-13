@@ -1,0 +1,68 @@
+{% extends "empleados/base_empleados.html" %}
+{% block title %}POS{% endblock %}
+
+{% block content %}
+<h2>🧾 Punto de venta</h2>
+
+<div style="display:flex; gap:30px">
+
+    <!-- PRODUCTOS -->
+    <div style="flex:2">
+        <h3>Productos</h3>
+        {% for p in productos %}
+            <div class="card">
+                <strong>{{ p.producto.nombre }}</strong><br>
+                {{ p.tamano }} {{ p.unidad_medida }}<br>
+                ${{ p.precio }}<br>
+
+                <button onclick="posAgregar(`{{ p.id }}`)">
+                    Agregar
+                </button>
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+
+    <!-- TICKET -->
+    <div style="flex:1">
+        <h3>Ticket</h3>
+
+        <div id="ticket">
+            {% include "empleados/pos_ticket.html" %}
+        </div>
+    </div>
+
+</div>
+
+<script>
+function posAgregar(id) {
+    fetch(`/empleados/ventas/agregar/${id}/`)
+        .then(() => actualizarTicket());
+}
+
+function posQuitar(id) {
+    fetch(`/empleados/ventas/quitar/${id}/`)
+        .then(() => actualizarTicket());
+}
+
+function posCobrar() {
+    fetch(`/empleados/ventas/cobrar/`)
+        .then(() => {
+            actualizarTicket();
+            alert("Venta registrada ✔");
+        });
+}
+
+function actualizarTicket() {
+    fetch(`/empleados/ventas/`)
+        .then(res => res.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            document.getElementById("ticket").innerHTML =
+                doc.getElementById("ticket").innerHTML;
+        });
+}
+</script>
+
+{% endblock %}

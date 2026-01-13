@@ -1,0 +1,53 @@
+{% extends "empleados/base_empleados.html" %}
+
+{% block content %}
+<h2>📦 Inventario</h2>
+
+<table style="width:100%; border-collapse:collapse;">
+    <tr style="background:#eee;">
+        <th>Producto</th>
+        <th>Presentación</th>
+        <th>Bodega</th>
+        <th>Stock</th>
+        <th>Mínimo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for inv in inventarios %}
+    <tr>
+        <td>{{ inv.presentacion.producto.nombre }}</td>
+
+        <td>
+            {{ inv.presentacion.tamano }}
+            {{ inv.presentacion.unidad_medida }}
+            ({{ inv.presentacion.piezas_por_unidad }} pz)
+        </td>
+
+        <td>{{ inv.bodega.nombre }}</td>
+
+        <td>
+            {% if inv.stock <= inv.stock_minimo %}
+                <strong style="color:red;">{{ inv.stock }}</strong>
+            {% else %}
+                {{ inv.stock }}
+            {% endif %}
+        </td>
+
+        <td>{{ inv.stock_minimo }}</td>
+
+        <td>
+            {% if inv.activo %}
+                🟢 Activo
+            {% else %}
+                🔴 Inactivo
+            {% endif %}
+        </td>
+
+        <td>
+            <a href="{% url 'ajustar_stock' inv.id %}">⚙ Ajustar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
