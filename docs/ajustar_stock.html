@@ -1,29 +1,40 @@
-{% extends "empleados/base_empleados.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajustar stock | Pirata Market</title>
+</head>
+<body>
 
-{% block content %}
-<h2>⚙ Ajustar stock</h2>
+<div class="navbar">
+    <strong>🧑‍💼 PIRATA MARKET</strong>
+    <div>
+        <a href="inventario.html">Inventario</a>
+        <a href="login.html">Salir</a>
+    </div>
+</div>
 
-<p>
-    <strong>{{ inventario.presentacion.producto.nombre }}</strong><br>
-    {{ inventario.presentacion.tamano }}
-    {{ inventario.presentacion.unidad_medida }}<br>
-    Bodega: {{ inventario.bodega.nombre }}
-</p>
+<div class="container">
+    <h2>⚙ Ajustar stock</h2>
 
-<p>
-    Stock actual: <strong>{{ inventario.stock }}</strong>
-</p>
+    <div class="card">
+        <p><strong>Producto:</strong> Coca-Cola 600 ml</p>
+        <p><strong>Bodega:</strong> Sucursal Centro</p>
+        <p><strong>Stock actual:</strong> 3</p>
 
-<form method="post">
-    {% csrf_token %}
+        <form onsubmit="alert('Stock actualizado (simulado)'); return false;">
+            <select>
+                <option>➕ Agregar</option>
+                <option>➖ Descontar</option>
+            </select>
 
-    <select name="tipo">
-        <option value="sumar">➕ Agregar</option>
-        <option value="restar">➖ Descontar</option>
-    </select>
+            <input type="number" min="1" value="1">
 
-    <input type="number" name="cantidad" min="1" required>
+            <br><br>
+            <button>Guardar</button>
+        </form>
+    </div>
+</div>
 
-    <button type="submit">Guardar</button>
-</form>
-{% endblock %}
+</body>
+</html>
