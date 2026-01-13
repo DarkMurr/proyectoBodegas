@@ -1,31 +1,44 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo | Pirata Market</title>
+</head>
+<body>
 
-{% block title %}Catálogo{% endblock %}
-
-{% block content %}
+<div class="navbar">
+    <strong>PIRATA MARKET</strong>
+    <div>
+        <a href="catalogo.html">Inicio</a>
+        <a href="carrito.html">Carrito</a>
+    </div>
+</div>
 
 <div class="container">
 
-    <!-- 🔍 BUSCADOR -->
-    <form method="get" class="search-form">
-    <div class="search-box">
-        <input
-            type="text"
-            name="q"
-            placeholder="Buscar productos..."
-            value="{{ query }}"
-        >
-        <button type="submit" class="search-btn">
-            🔍
-        </button>
+    <form class="search-form">
+        <div class="search-box">
+            <input type="text" placeholder="Buscar productos...">
+            <button>🔍</button>
+        </div>
+    </form>
+
+    <h2>Bebidas</h2>
+
+    <h3>Coca-Cola <small>FEMSA</small></h3>
+
+    <div class="grid">
+        <div class="card">
+            <p><strong>600 ml</strong></p>
+            <p>Pieza</p>
+            <p class="precio">$20</p>
+            <button onclick="alert('Agregado al carrito')">
+                Agregar al carrito
+            </button>
+        </div>
     </div>
-</form>
-
-    <br>
-
-    <!-- 📦 PRODUCTOS -->
-    {% include "catalogo/lista_productos.html" %}
 
 </div>
 
-{% endblock %}
+</body>
+</html>
