@@ -1,53 +1,49 @@
-{% extends "empleados/base_empleados.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario | Pirata Market</title>
+</head>
+<body>
 
-{% block content %}
-<h2>📦 Inventario</h2>
+<div class="navbar">
+    <strong>🧑‍💼 PIRATA MARKET</strong>
+    <div>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="inventario.html">Inventario</a>
+        <a href="login.html">Salir</a>
+    </div>
+</div>
 
-<table style="width:100%; border-collapse:collapse;">
-    <tr style="background:#eee;">
-        <th>Producto</th>
-        <th>Presentación</th>
-        <th>Bodega</th>
-        <th>Stock</th>
-        <th>Mínimo</th>
-        <th>Estado</th>
-        <th>Acciones</th>
-    </tr>
+<div class="container">
+    <h2>📦 Inventario</h2>
 
-    {% for inv in inventarios %}
-    <tr>
-        <td>{{ inv.presentacion.producto.nombre }}</td>
+    <table border="1" cellpadding="10" style="width:100%; background:white;">
+        <tr style="background:#eee;">
+            <th>Producto</th>
+            <th>Presentación</th>
+            <th>Bodega</th>
+            <th>Stock</th>
+            <th>Acción</th>
+        </tr>
 
-        <td>
-            {{ inv.presentacion.tamano }}
-            {{ inv.presentacion.unidad_medida }}
-            ({{ inv.presentacion.piezas_por_unidad }} pz)
-        </td>
+        <tr>
+            <td>Coca-Cola</td>
+            <td>600 ml</td>
+            <td>Sucursal Centro</td>
+            <td><strong style="color:red;">3</strong></td>
+            <td><a href="ajustar_stock.html">⚙ Ajustar</a></td>
+        </tr>
 
-        <td>{{ inv.bodega.nombre }}</td>
+        <tr>
+            <td>Jabón Zote</td>
+            <td>Barra</td>
+            <td>Sucursal Norte</td>
+            <td>25</td>
+            <td><a href="ajustar_stock.html">⚙ Ajustar</a></td>
+        </tr>
+    </table>
+</div>
 
-        <td>
-            {% if inv.stock <= inv.stock_minimo %}
-                <strong style="color:red;">{{ inv.stock }}</strong>
-            {% else %}
-                {{ inv.stock }}
-            {% endif %}
-        </td>
-
-        <td>{{ inv.stock_minimo }}</td>
-
-        <td>
-            {% if inv.activo %}
-                🟢 Activo
-            {% else %}
-                🔴 Inactivo
-            {% endif %}
-        </td>
-
-        <td>
-            <a href="{% url 'ajustar_stock' inv.id %}">⚙ Ajustar</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-{% endblock %}
+</body>
+</html>
