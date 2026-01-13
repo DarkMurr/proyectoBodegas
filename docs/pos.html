@@ -1,68 +1,48 @@
-{% extends "empleados/base_empleados.html" %}
-{% block title %}POS{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>POS | Pirata Market</title>
+</head>
+<body>
 
-{% block content %}
-<h2>🧾 Punto de venta</h2>
-
-<div style="display:flex; gap:30px">
-
-    <!-- PRODUCTOS -->
-    <div style="flex:2">
-        <h3>Productos</h3>
-        {% for p in productos %}
-            <div class="card">
-                <strong>{{ p.producto.nombre }}</strong><br>
-                {{ p.tamano }} {{ p.unidad_medida }}<br>
-                ${{ p.precio }}<br>
-
-                <button onclick="posAgregar(`{{ p.id }}`)">
-                    Agregar
-                </button>
-            </div>
-            <br>
-        {% endfor %}
+<div class="navbar">
+    <strong>🧑‍💼 PIRATA MARKET</strong>
+    <div>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="pos.html">POS</a>
     </div>
-
-    <!-- TICKET -->
-    <div style="flex:1">
-        <h3>Ticket</h3>
-
-        <div id="ticket">
-            {% include "empleados/pos_ticket.html" %}
-        </div>
-    </div>
-
 </div>
 
-<script>
-function posAgregar(id) {
-    fetch(`/empleados/ventas/agregar/${id}/`)
-        .then(() => actualizarTicket());
-}
+<div class="container">
+    <h2>🧾 Punto de venta</h2>
 
-function posQuitar(id) {
-    fetch(`/empleados/ventas/quitar/${id}/`)
-        .then(() => actualizarTicket());
-}
+    <div style="display:flex; gap:30px">
 
-function posCobrar() {
-    fetch(`/empleados/ventas/cobrar/`)
-        .then(() => {
-            actualizarTicket();
-            alert("Venta registrada ✔");
-        });
-}
+        <div style="flex:2">
+            <div class="card">
+                <strong>Coca-Cola</strong><br>
+                600 ml<br>
+                $20<br>
+                <button onclick="alert('Agregado')">Agregar</button>
+            </div>
+        </div>
 
-function actualizarTicket() {
-    fetch(`/empleados/ventas/`)
-        .then(res => res.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
-            document.getElementById("ticket").innerHTML =
-                doc.getElementById("ticket").innerHTML;
-        });
-}
-</script>
+        <div style="flex:1">
+            <h3>Ticket</h3>
 
-{% endblock %}
+            <div class="card">
+                Coca-Cola × 2<br>
+                <strong>Total: $40</strong>
+
+                <button onclick="alert('Venta registrada')" style="width:100%;">
+                    COBRAR
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
