@@ -58,10 +58,10 @@
             background: #333;
         }
 
-        .error {
-            color: red;
-            font-size: 14px;
-            margin-bottom: 10px;
+        .nota {
+            font-size: 12px;
+            color: #777;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -71,32 +71,35 @@
     <h1>🏴‍☠️ Pirata Market</h1>
     <p>Acceso para empleados</p>
 
-    {% if form.errors %}
-        <div class="error">
-            Usuario o contraseña incorrectos
-        </div>
-    {% endif %}
-
-    <form method="post">
-        {% csrf_token %}
-
+    <!-- Login SIMULADO -->
+    <form onsubmit="return fakeLogin()">
         <input 
             type="text" 
-            name="username" 
             placeholder="Usuario"
             required
         >
 
         <input 
             type="password" 
-            name="password" 
             placeholder="Contraseña"
             required
         >
 
         <button type="submit">Iniciar sesión</button>
     </form>
+
+    <div class="nota">
+        * Versión demostrativa sin autenticación real
+    </div>
 </div>
+
+<script>
+    function fakeLogin() {
+        alert("Login simulado ✔️");
+        window.location.href = "index.html";
+        return false;
+    }
+</script>
 
 </body>
 </html>
