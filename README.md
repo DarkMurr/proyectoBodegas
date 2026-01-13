@@ -42,7 +42,24 @@ El sistema está pensado para simular un entorno real de ventas tanto en línea 
 
 ---
 
-## 📊 Diagramas
+## 📊 Diagramas del sistema
 
-### Modelo Entidad–Relación Basico
-![ER](diagramas/Diagrama_ER_Basico.drawio.png)
+### Diagrama ER Básico
+Representa las entidades principales del sistema y sus relaciones generales.
+
+![Diagrama ER Básico](diagramas/Diagrma_ER_Basico.drawio.png)
+
+---
+
+### Diagrama ER Extendido
+Incluye atributos, claves primarias, foráneas y relaciones detalladas
+entre productos, pedidos, inventario, clientes y empleados.
+
+![Diagrama ER Extendido](diagramas/Diagrama_ER_Extendido.drawio.png)
+
+---
+
+### Diagrama Relacional – Base de Datos BodegaDB
+Modelo relacional final utilizado para la implementación en PostgreSQL.
+
+![Diagrama Relacional](diagramas/Diagrama_Relacional_BodegaDB.drawio.png)
