@@ -2,54 +2,68 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Panel empleados{% endblock %}</title>
+    <title>Panel empleados | Pirata Market</title>
     <style>
-        body { margin:0; font-family:Arial; background:#f4f4f4; }
+        body {
+            margin:0;
+            font-family:Arial, sans-serif;
+            background:#f4f4f4;
+        }
         .navbar {
             background:#111;
             color:white;
-            padding:15px;
+            padding:15px 25px;
             display:flex;
             justify-content:space-between;
+            align-items:center;
         }
-        .navbar a { color:white; margin-left:15px; text-decoration:none; }
-        .container { padding:30px; }
+        .navbar a {
+            color:white;
+            margin-left:15px;
+            text-decoration:none;
+            font-size:14px;
+        }
+        .navbar a:hover {
+            text-decoration:underline;
+        }
+        .container {
+            padding:30px;
+        }
+        .card {
+            background:white;
+            padding:20px;
+            border-radius:8px;
+            box-shadow:0 2px 8px rgba(0,0,0,.1);
+        }
+        button {
+            background:#111;
+            color:white;
+            border:none;
+            padding:8px 12px;
+            border-radius:5px;
+            cursor:pointer;
+        }
+        button:hover {
+            background:#333;
+        }
     </style>
 </head>
 <body>
 
 <div class="navbar">
     <strong>🧑‍💼 PIRATA MARKET</strong>
-
     <div>
-        <a href="{% url 'empleados_dashboard' %}">Dashboard</a>
-
-        <a href="{% url 'pos' %}">POS</a>
-
-        <a href="{% url 'pedidos_pendientes' %}">Pedidos</a>
-
-        <a href="{% url 'inventario' %}">Inventario</a>
-
-        <a href="{% url 'productos' %}">Productos</a>
-
-        <form method="post" action="{% url 'logout' %}" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" style="
-                background: none;
-                border: none;
-                color: white;
-                cursor: pointer;
-                font-size: inherit;
-                margin-left: 10px;
-            ">
-                Salir
-            </button>
-        </form>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="pos.html">POS</a>
+        <a href="pedidos.html">Pedidos</a>
+        <a href="inventario.html">Inventario</a>
+        <a href="productos.html">Productos</a>
+        <a href="login.html">Salir</a>
     </div>
 </div>
 
 <div class="container">
-    {% block content %}{% endblock %}
+    <!-- CONTENIDO -->
 </div>
 
 </body>
