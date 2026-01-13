@@ -41,3 +41,8 @@ El sistema está pensado para simular un entorno real de ventas tanto en línea 
 - *Control de versiones:* Git & GitHub
 
 ---
+
+## 📊 Diagramas
+
+### Modelo Entidad–Relación Basico
+![ER](diagramas/Diagrama_ER_Basico.drawio.png)
