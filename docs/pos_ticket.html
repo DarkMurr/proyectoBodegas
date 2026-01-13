@@ -1,22 +1,31 @@
-{% if request.session.pos %}
-    {% for pid, item in request.session.pos.items %}
-        <div style="margin-bottom:10px;">
-            <strong>{{ item.nombre }}</strong><br>
-            {{ item.cantidad }} × ${{ item.precio }}
+<div>
 
-            <div>
-                <button onclick="posQuitar(`{{ pid }}`)">➖</button>
-                <button onclick="posAgregar(`{{ pid }}`)">➕</button>
-            </div>
+    <div style="margin-bottom:10px;">
+        <strong>Coca-Cola</strong><br>
+        2 × $20
+
+        <div>
+            <button onclick="alert('Quitar producto (demo)')">➖</button>
+            <button onclick="alert('Agregar producto (demo)')">➕</button>
         </div>
-    {% endfor %}
+    </div>
+
+    <div style="margin-bottom:10px;">
+        <strong>Sabritas Original</strong><br>
+        1 × $18
+
+        <div>
+            <button onclick="alert('Quitar producto (demo)')">➖</button>
+            <button onclick="alert('Agregar producto (demo)')">➕</button>
+        </div>
+    </div>
 
     <hr>
-    <strong>Total: ${{ total }}</strong>
 
-    <button onclick="posCobrar()" style="width:100%;">
+    <strong>Total: $58</strong>
+
+    <button onclick="alert('Venta cobrada (demo)')" style="width:100%; margin-top:10px;">
         COBRAR
     </button>
-{% else %}
-    <p>Sin productos</p>
-{% endif %}
+
+</div>
