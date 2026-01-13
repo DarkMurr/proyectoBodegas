@@ -1,38 +1,43 @@
-{% if request.session.carrito %}
+<div>
 
-    {% for pid, item in request.session.carrito.items %}
-        <div class="card" style="margin-bottom:10px;">
-            <strong>{{ item.producto }}</strong><br>
-            <small>{{ item.presentacion }}</small>
+    <div class="card" style="margin-bottom:10px;">
+        <strong>Coca-Cola</strong><br>
+        <small>600 ml</small>
 
-            <div style="margin:8px 0; display:flex; align-items:center; gap:10px;">
-                <a href="javascript:void(0)" onclick="removeFromCart('{{ pid }}')">➖</a>
-                <strong>{{ item.cantidad }}</strong>
-                <a href="javascript:void(0)" onclick="addToCart('{{ pid }}')">➕</a>
-            </div>
-
-            <small>
-                ${{ item.precio }} × {{ item.cantidad }} =
-                <strong>${{ item.subtotal }}</strong>
-            </small>
+        <div style="margin:8px 0; display:flex; align-items:center; gap:10px;">
+            <a href="#" onclick="alert('Quitar uno (demo)')">➖</a>
+            <strong>2</strong>
+            <a href="#" onclick="alert('Agregar uno (demo)')">➕</a>
         </div>
-    {% endfor %}
+
+        <small>
+            $20 × 2 = <strong>$40</strong>
+        </small>
+    </div>
+
+    <div class="card" style="margin-bottom:10px;">
+        <strong>Sabritas</strong><br>
+        <small>45 g</small>
+
+        <div style="margin:8px 0; display:flex; align-items:center; gap:10px;">
+            <a href="#" onclick="alert('Quitar uno (demo)')">➖</a>
+            <strong>1</strong>
+            <a href="#" onclick="alert('Agregar uno (demo)')">➕</a>
+        </div>
+
+        <small>
+            $18 × 1 = <strong>$18</strong>
+        </small>
+    </div>
 
     <hr>
 
-    <!-- TOTAL (calculado en backend) -->
     <div style="margin-bottom:10px; font-size:18px;">
-        <strong>Total: ${{ total }}</strong>
+        <strong>Total: $58</strong>
     </div>
 
-    <!-- CONFIRMAR PEDIDO -->
-    <form action="{% url 'confirmar_pedido' %}" method="post" onsubmit="closeCart()">
-        {% csrf_token %}
-        <button style="margin-top:10px; width:100%;">
-            ✅ Confirmar pedido
-        </button>
-    </form>
+    <button style="margin-top:10px; width:100%;" onclick="alert('Pedido confirmado (demo)')">
+        ✅ Confirmar pedido
+    </button>
 
-{% else %}
-    <p>Tu carrito está vacío</p>
-{% endif %}
+</div>
