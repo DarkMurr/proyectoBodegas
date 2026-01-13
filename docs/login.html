@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesión | Pirata Market</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-box {
+            background: white;
+            width: 320px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .login-box h1 {
+            margin-bottom: 10px;
+        }
+
+        .login-box p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <h1>🏴‍☠️ Pirata Market</h1>
+    <p>Acceso para empleados</p>
+
+    {% if form.errors %}
+        <div class="error">
+            Usuario o contraseña incorrectos
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input 
+            type="text" 
+            name="username" 
+            placeholder="Usuario"
+            required
+        >
+
+        <input 
+            type="password" 
+            name="password" 
+            placeholder="Contraseña"
+            required
+        >
+
+        <button type="submit">Iniciar sesión</button>
+    </form>
+</div>
+
+</body>
+</html>
