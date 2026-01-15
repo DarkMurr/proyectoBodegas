@@ -66,6 +66,10 @@ Modelo relacional final utilizado para la implementación en PostgreSQL.
 
 ---
 
+## 📸 Capturas de pantalla
+
+---
+
 ## 🔗 Enlaces importantes
 
 - 📂 **Repositorio del proyecto:**  
