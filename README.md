@@ -83,7 +83,13 @@ Modelo relacional final utilizado para la implementación en PostgreSQL.
 
 ---
 
-Usuario de Prueba
-Usuario: DarkMurr
-Constraseña: Escom1234
+## 🔐 Acceso de prueba (Panel de empleados)
+
+Para fines de demostración y revisión del proyecto, se habilitó un usuario de prueba para acceder al panel de empleados, donde se puede visualizar el **POS**, **inventario**, **pedidos** y demás funcionalidades internas.
+
+**Credenciales:**
+- **Usuario:** `DarkMurr`
+- **Contraseña:** `Escom1234`
+
+📍 El acceso se realiza desde la opción **Login** en la barra de navegación o directamente en la ruta de inicio de sesión del sistema.
 
