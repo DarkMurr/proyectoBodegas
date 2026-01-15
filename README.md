@@ -1,4 +1,4 @@
-# 🏴‍☠️ Pirata Market – Sistema de Gestión de Abarrotes
+lo# 🏴‍☠️ Pirata Market – Sistema de Gestión de Abarrotes
 
 Pirata Market es una aplicación web desarrollada en *Django* para la gestión integral de una cadena de abarrotes.  
 Incluye catálogo público de productos, carrito de compras, sistema de pedidos, punto de venta (POS) para empleados, control de inventario y manejo de múltiples sucursales (bodegas).
@@ -63,6 +63,19 @@ entre productos, pedidos, inventario, clientes y empleados.
 Modelo relacional final utilizado para la implementación en PostgreSQL.
 
 ![Diagrama Relacional](diagramas/Diagrama_Relacional_BodegaDB.drawio.png)
+
+---
+
+## 🔗 Enlaces importantes
+
+- 📂 **Repositorio del proyecto:**  
+  https://github.com/DarkMurr/proyectoBodegas
+
+- 🌐 **Aplicación web (deploy en Render):**  
+  https://pirata-market.onrender.com
+
+- 📄 **Versión estática (GitHub Pages):**  
+  https://darkmurr.github.io/proyectoBodegas/
 
 ---
 
