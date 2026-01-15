@@ -66,7 +66,16 @@ Modelo relacional final utilizado para la implementación en PostgreSQL.
 
 ---
 
-## 📸 Capturas de pantalla
+## 📸 Capturas del sistema
+
+A continuación se muestran algunas capturas representativas de la interfaz y funcionalidades principales del sistema **Pirata Market**.
+
+<p align="center">
+  <img src="https://github.com/DarkMurr/proyectoBodegas/blob/main/Screenshots/IMG-20260113-WA0010.jpg" width="220"/>
+  <img src="https://github.com/DarkMurr/proyectoBodegas/blob/main/Screenshots/IMG-20260113-WA0009.jpg" width="220"/>
+  <img src="https://github.com/DarkMurr/proyectoBodegas/blob/main/Screenshots/IMG-20260113-WA0008.jpg" width="220"/>
+  <img src="https://github.com/DarkMurr/proyectoBodegas/blob/main/Screenshots/IMG-20260113-WA0007.jpg" width="220"/>
+</p>
 
 ---
 
